@@ -102,7 +102,7 @@ footer .row{margin:10px 0}
 .gd .meta{font-size:.8rem;color:var(--mu);display:flex;flex-direction:column;gap:2px;margin-bottom:14px}
 .gd .acts{display:flex;gap:8px;flex-wrap:wrap}
 @media(max-width:560px){.gd{grid-template-columns:1fr}.gd .gc{width:180px;margin:0 auto}}
-.building .cr{display:none!important}
+.building .cr,.building .bnr{display:none!important}
 @keyframes pls{0%,100%{box-shadow:0 0 0 0 #4a6fd000}50%{box-shadow:0 0 0 5px #4a6fd0aa}}
 #dev.pulse{animation:pls .6s ease-in-out 3;border-color:var(--ps2)}
 .building #inicio{padding-bottom:0}
@@ -115,6 +115,35 @@ footer .row{margin:10px 0}
   #juegos .bmain .ctl{margin-top:0}
   #juegos .bmain .grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
 }
+.bnr{max-width:1100px;margin:0 auto;padding:16px 16px 0}
+.bnr .bimg{position:relative;width:100%;aspect-ratio:var(--bar,1024/285);border-radius:8px;overflow:hidden;border:1px solid var(--ln);background:#0a0d13}
+.bnr img{width:100%;height:100%;object-fit:cover;display:block}
+.bnr .bph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;padding:12px;border:2px dashed #3a4560;border-radius:8px;color:var(--mu);font-size:.9rem;background:repeating-linear-gradient(45deg,#0d1220 0 14px,#101728 14px 28px)}
+.bnr .bph b{color:var(--tx);font-size:1rem;letter-spacing:1px}
+.bnr .bph small{font-size:.76rem}
+.desc{max-width:720px;margin:18px auto;text-align:left;background:var(--pn);border:1px solid var(--ln);border-radius:8px;padding:18px 20px}
+.desc h3{font-size:1.15rem;margin:0 0 10px;letter-spacing:.3px}
+.desc p{color:var(--tx);max-width:none;margin:0 0 10px;font-size:.95rem;line-height:1.6}
+.desc ul{margin:0 0 10px;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.desc li{background:#0f1420;border:1px solid var(--ln);border-radius:6px;padding:10px 12px;font-size:.92rem;line-height:1.5}
+.desc > :last-child{margin-bottom:0}
+#botFab{position:fixed;right:16px;bottom:16px;z-index:45;display:flex;align-items:center;gap:8px;border:1px solid var(--ps2);background:var(--ps2);color:#fff;border-radius:26px;padding:12px 18px;font:inherit;font-size:.9rem;cursor:pointer;box-shadow:0 6px 20px #0008;min-height:48px}
+#botFab:hover{filter:brightness(1.1)}
+#botBox{position:fixed;right:16px;bottom:76px;z-index:46;width:min(380px,calc(100vw - 24px));height:min(560px,calc(100vh - 96px));display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--ln);border-radius:10px;box-shadow:0 10px 40px #000a;overflow:hidden}
+#botBox[hidden]{display:none}
+#botBox .bh{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#0a0d13;border-bottom:1px solid var(--ln)}
+#botBox .bh .btn{min-height:36px;padding:4px 12px}
+#botLog{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+.bm{max-width:90%;padding:9px 12px;border-radius:10px;font-size:.88rem;line-height:1.5;overflow-wrap:anywhere}
+.bm.bot{background:var(--pn);border:1px solid var(--ln);align-self:flex-start}
+.bm.me{background:#1c2640;border:1px solid #2f4478;align-self:flex-end}
+.ba{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.ba .btn{min-height:38px;padding:8px 12px;font-size:.82rem;text-align:left}
+#botChips{display:flex;gap:6px;overflow-x:auto;padding:8px 10px;border-top:1px solid var(--ln);scrollbar-width:thin}
+#botChips .chip{flex:none;min-height:34px;padding:6px 12px;font-size:.78rem;white-space:nowrap}
+#botForm{display:flex;gap:6px;padding:8px 10px;border-top:1px solid var(--ln)}
+#botIn{flex:1;min-width:0}
+.dots{letter-spacing:3px;color:var(--mu)}
 @media(max-width:820px){#menuBtn{display:block;margin-left:auto}nav{display:none;position:absolute;top:100%;left:0;right:0;background:#0a0d13;flex-direction:column;border-bottom:1px solid var(--ln);padding:6px 10px}nav.open{display:flex}nav a{padding:14px 8px;font-size:1rem}.hero h1{font-size:2rem}}
 </style>
 </head>
@@ -129,10 +158,17 @@ footer .row{margin:10px 0}
 </header>
 
 <main>
+<section class="bnr" id="banner" aria-label="Banner">
+  <div class="bimg">
+    <img id="bnrImg" alt="LevelUp" hidden>
+    <div class="bph" id="bnrPh"><b>ESPACIO PARA EL BANNER</b><span>Medida recomendada: 1600 × 450 px (proporción 3,6 : 1)</span></div>
+  </div>
+</section>
+
 <section id="inicio" class="hero">
   <div id="heroLogo"></div>
   <p id="slogan" style="font-size:1.1rem;color:var(--tx)"></p>
-  <p id="desc"></p>
+  <div id="desc" class="desc"></div>
   <div class="row">
     <a class="btn pri" href="#productos">Ver productos</a>
     <a class="btn" href="#juegos">Ver juegos</a>
@@ -216,6 +252,15 @@ footer .row{margin:10px 0}
   <div class="mu" style="margin-top:10px">Precios en pesos argentinos (ARS)</div>
 </footer>
 
+<div id="bot">
+  <button id="botFab" aria-expanded="false" aria-controls="botBox"><span aria-hidden="true">🕹️</span> Josticksito</button>
+  <section id="botBox" role="dialog" aria-label="Josticksito, asistente de LevelUp" hidden>
+    <div class="bh"><b>🕹️ Josticksito</b><button class="btn" id="botX" type="button" aria-label="Cerrar chat">✕</button></div>
+    <div id="botLog" aria-live="polite"></div>
+    <div id="botChips"></div>
+    <form id="botForm"><input id="botIn" placeholder="Escribí tu consulta..." autocomplete="off" enterkeyhint="send" aria-label="Tu consulta"><button class="btn pri" type="submit">Enviar</button></form>
+  </section>
+</div>
 <dialog id="gDlg" aria-label="Detalle del juego"><div id="gBody"></div></dialog>
 <div id="ov"></div>
 <aside id="cart" aria-label="Carrito">
@@ -236,14 +281,18 @@ footer .row{margin:10px 0}
    Los campos marcados [RELLENAR] son los que tenés que completar.
    ===================================================================== */
 
+const IMG_LOGO = "imagenes/logo.webp";
+const IMG_BANNER = "imagenes/banner.webp";
+
 const NEGOCIO = {
   nombre: "LEVELUP",
-  logo: "",                       // [RELLENAR] ruta de tu logo, ej: "logo.png" (si queda vacío se muestra el nombre en texto)
-  slogan: "[RELLENAR] slogan",
-  descripcion: "[RELLENAR] descripción corta del negocio",
+  logo: IMG_LOGO,                       // [RELLENAR] ruta de tu logo, ej: "logo.png" (si queda vacío se muestra el nombre en texto)
+  slogan: "Sube tu nivel de juego con LevelUp",
+  descripcion: "LevelUp: Todo para llevar tus consolas al siguiente nivel 🚀🎮\n¿Te acordás de la magia de prender la PlayStation 2 y pasar horas jugando? En LevelUp revivimos esa pasión al máximo. Somos especialistas en la PS2: preparamos tu Memory Card con OPL y te armamos los pendrives o discos rígidos externos llenos con tus juegos favoritos, listos para conectar, encender y jugar sin renegar con discos rayados o lectoras rotas.\nPero no nos quedamos ahí:\n* 🟦 PlayStation 3: Instalamos HEN y tiendas digitales para que descargues el catálogo que quieras directamente desde la consola.\n* 🟩 Xbox 360: Nos encargamos de liberarla para que le saques todo el jugo sin restricciones.\nTu infancia, tus clásicos de siempre y los mejores títulos, funcionando como tiene que ser. ¡Subí de nivel con nosotros! 👾🔥",
   ubicacion: "[RELLENAR] ubicación",
   whatsapp: "[RELLENAR]",         // solo números con código de país, ej: 5491123456789
   instagram: "[RELLENAR]",        // link completo, ej: https://instagram.com/tuusuario
+  messenger: "[RELLENAR]",        // tu usuario de Facebook para Messenger, ej: levelup.ar  (abre m.me/levelup.ar)
   marketplace: "[RELLENAR]"       // link completo de tu perfil de Facebook Marketplace
 };
 
@@ -306,7 +355,15 @@ const NINOS = [];
 const GALERIA = ["", "", "", "", ""];
 const shuffle = a => { a = [...a]; for (let i = a.length-1; i > 0; i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]] = [a[j],a[i]]; } return a; };
 const gCard = j => `<button class="cc" data-cg="${esc(j.nombre)}" aria-label="${esc(j.nombre)}"><div class="cv" style="${j.portada?`background-image:url('${esc(j.portada)}')`:""}">${j.portada?"":esc(j.nombre)}</div><span>${esc(j.nombre)}</span></button>`;
+function renderBanner(){
+  const img = $("#bnrImg"); if (!img) return;
+  img.onload = () => { $(".bimg").style.setProperty("--bar", img.naturalWidth + " / " + img.naturalHeight); img.hidden = false; $("#bnrPh").hidden = true; };
+  img.onerror = () => { img.hidden = true; $("#bnrPh").hidden = false; };
+  img.src = IMG_BANNER;
+  if (img.complete && img.naturalWidth) img.onload();
+}
 function renderHome(){
+  renderBanner();
   let rec = RECOMENDADOS.map(n => juego(n)).filter(Boolean);
   if (!rec.length) rec = shuffle(JUEGOS).slice(0, 15);
   const usados = new Set(rec.map(j => j.nombre));
@@ -393,12 +450,19 @@ const total = () => cart.reduce((t,i)=> t + itemTotal(i), 0);
 /* ---- encabezado / pie ---- */
 function link(url){ return todo(url) ? "#" : url; }
 function logoHTML(h){ return NEGOCIO.logo ? `<img src="${esc(NEGOCIO.logo)}" alt="${esc(NEGOCIO.nombre)}" style="height:${h}px;max-width:100%;width:auto">` : `<b style="letter-spacing:4px;font-size:${h>60?"2.6rem":"1.4rem"}">${esc(NEGOCIO.nombre)}</b>`; }
+function descHTML(t){
+  const L = String(t).split("\n").map(x => x.trim()).filter(Boolean); let o = "", ul = [];
+  const flush = () => { if (ul.length){ o += "<ul>" + ul.map(x => "<li>" + esc(x) + "</li>").join("") + "</ul>"; ul = []; } };
+  L.forEach((l, i) => { if (/^[*•-]\s+/.test(l)) ul.push(l.replace(/^[*•-]\s+/, "")); else { flush(); o += i === 0 ? "<h3>" + esc(l) + "</h3>" : "<p>" + esc(l) + "</p>"; } });
+  flush(); return o;
+}
 function initBusiness(){
+  $("#desc").innerHTML = descHTML(NEGOCIO.descripcion); if (todo(NEGOCIO.descripcion)) $("#desc").classList.add("todo");
   document.title = NEGOCIO.nombre;
   $("#hLogo").innerHTML = logoHTML(38);
   $("#heroLogo").innerHTML = logoHTML(110);
   $("#fLogo").innerHTML = logoHTML(48);
-  [["#slogan","slogan"],["#desc","descripcion"],["#fSlogan","slogan"],["#fLoc","ubicacion"]].forEach(([s,k])=>{ const e=$(s); e.textContent = NEGOCIO[k]; if(todo(NEGOCIO[k])) e.classList.add("todo"); });
+  [["#slogan","slogan"],["#fSlogan","slogan"],["#fLoc","ubicacion"]].forEach(([s,k])=>{ const e=$(s); e.textContent = NEGOCIO[k]; if(todo(NEGOCIO[k])) e.classList.add("todo"); });
   const wa = waUrl("Hola LevelUp, quiero hacer una consulta.");
   $("#waHero").href = wa;
   $("#fLinks").innerHTML = [["Instagram", NEGOCIO.instagram],["Facebook Marketplace", NEGOCIO.marketplace],["WhatsApp", wa]]
@@ -587,9 +651,155 @@ $("#sendWa").onclick = () => {
   window.open(waUrl(orderText(n)), "_blank");
 };
 
+/* =====================================================================
+   ASISTENTE DE PREGUNTAS FRECUENTES (sin inteligencia artificial)
+   Las respuestas de precios, capacidad, servicios y juegos salen solas de los datos de arriba.
+   Las de abajo las completás vos: mientras tengan [RELLENAR], el asistente deriva al cliente a WhatsApp/Messenger.
+   ===================================================================== */
+const BOT_FAQ = [
+  { k:/envio|enviar|correo|entrega/,                       a:"[RELLENAR]" },   // ej: "Hacemos envíos a todo el país por correo."
+  { k:/pago|pagar|transferencia|efectivo|mercado ?pago|tarjeta/, a:"[RELLENAR]" }, // ej: "Aceptamos transferencia, efectivo y Mercado Pago."
+  { k:/garantia/,                                           a:"[RELLENAR]" },   // ej: "Todos los trabajos tienen 30 días de garantía."
+  { k:/ubicacion|donde estan|direccion|retiro|local/,       a:() => NEGOCIO.ubicacion }
+];
+function initBot(){
+  const fab = $("#botFab"), box = $("#botBox"), log = $("#botLog"), chips = $("#botChips"), inp = $("#botIn");
+  const norm = t => String(t).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
+  const ALIAS = { gta:"grand theft auto", re4:"resident evil 4", dbz:"dragon ball z", mk:"mortal kombat", gow:"god of war", gh:"guitar hero", sh:"silent hill", sf:"street fighter" };
+  const STOP = new Set("tenes tienen tienes hay el la los las un una de del juego juegos que para quiero busco necesito buscar con se tiene cuanto cuesta sale precio valor costo por favor me al lo es en y o a ps2 ps3 xbox".split(" "));
+  let last = "", started = false;
+  const toEnd = () => { log.scrollTop = log.scrollHeight; };
+  function msg(who, html, acts){
+    const d = document.createElement("div"); d.className = "bm " + who; d.innerHTML = html;
+    if (acts && acts.length){
+      const r = document.createElement("div"); r.className = "ba";
+      acts.forEach(a => {
+        const real = a.href && a.href !== "#", e = document.createElement(real ? "a" : "button");
+        e.className = "btn" + (a.pri ? " pri" : ""); e.textContent = a.t;
+        if (real){ e.href = a.href; e.target = "_blank"; e.rel = "noopener"; } else { e.type = "button"; if (a.fn) e.onclick = a.fn; }
+        r.appendChild(e);
+      });
+      d.appendChild(r);
+    }
+    log.appendChild(d); toEnd(); return d;
+  }
+  const bot = (html, acts) => { const t = msg("bot", '<span class="dots">•••</span>'); setTimeout(() => { t.remove(); msg("bot", html, acts); }, 350); };
+  const closeBot = () => { box.hidden = true; fab.setAttribute("aria-expanded", "false"); };
+  const openBot = () => { box.hidden = false; fab.setAttribute("aria-expanded", "true"); if (!started){ started = true; greet(); } if (!matchMedia("(pointer:coarse)").matches) inp.focus(); toEnd(); };
+  const contact = () => [
+    { t:"💬 Escribir por WhatsApp", href: waUrl("Hola LevelUp, tengo una consulta" + (last ? ": " + last : ".")), pri:true },
+    { t:"💬 Escribir por Messenger", href: todo(NEGOCIO.messenger || "[RELLENAR]") ? "#" : "https://m.me/" + encodeURIComponent(NEGOCIO.messenger) }
+  ];
+  const handoff = pre => bot((pre || "Eso conviene verlo con una persona 🙋.") + " Escribinos y te respondemos:", contact());
+  const goTo = sel => () => { closeBot(); document.querySelector(sel).scrollIntoView({ behavior:"smooth" }); };
+
+  function greet(){ bot("¡Hola! 👋 Soy <b>Josticksito</b>, el asistente de <b>LevelUp</b>. Te ayudo con precios, servicios y con el catálogo de juegos. ¿Qué querés saber?"); }
+  function prices(){
+    const g = JUEGOS.map(j => j.precio).filter(Boolean), mn = Math.min(...g), mx = Math.max(...g);
+    let h = "<b>💲 Precios</b><br>" + DISPOSITIVOS.filter(d => d.estado === "disponible" && !d.soloInstala).map(d => "• " + esc(d.nombre) + ": " + (d.precio ? ars(d.precio) : "consultar")).join("<br>");
+    if (g.length) h += "<br><br>Cada juego se suma aparte: " + (mn === mx ? ars(mn) : "desde " + ars(mn)) + " por juego.";
+    h += "<br>Si traés tu propio pendrive o disco, te instalamos los juegos: lo armás en <i>“Instala juegos en tu pendrive”</i>.";
+    bot(h, [{ t:"Ver servicios", fn: () => ask("🎮 Servicios") }]);
+  }
+  function capacity(){
+    if (!JUEGOS.length) return handoff();
+    const avg = JUEGOS.reduce((t, j) => t + j.pesoGB, 0) / JUEGOS.length;
+    bot("<b>💾 ¿Cuántos juegos entran?</b><br>Un juego ocupa en promedio unos " + gb(avg) + ". Aproximadamente:<br>" +
+      DISPOSITIVOS.filter(d => d.estado === "disponible").map(d => "• " + esc(d.nombre) + ": unos " + Math.floor(d.capacidadJuegosGB / avg) + " juegos").join("<br>") +
+      "<br><br>Una parte de cada pendrive o disco queda reservada para que funcione bien y sin errores.");
+  }
+  function servicios(){
+    bot("<b>🎮 Servicios</b><br>" + SERVICIOS.filter(s => s.activo).map(s => "• <b>" + esc(s.nombre) + "</b>" + (s.precio ? ": " + ars(s.precio) : "")).join("<br>") + "<br><br>Los ves con foto en la sección Servicios.", [{ t:"Ir a Servicios", fn: goTo("#servicios") }]);
+  }
+  function how(){
+    bot("<b>🧭 ¿Cómo hago mi pedido?</b><br>1. En <b>Servicios</b> tocá “Pendrive nuevo con juegos”, o “Instala juegos en tu pendrive” si traés el tuyo (pendrive o disco).<br>2. Elegí la capacidad.<br>3. Sumá los juegos: la barra te muestra cuánto espacio queda.<br>4. Agregá al carrito y enviá el pedido por WhatsApp.", [{ t:"Ir a Servicios", fn: goTo("#servicios") }]);
+  }
+  function askGame(){ bot("Escribime el nombre del juego (por ejemplo: <i>God of War</i>) y te digo si lo tengo."); inp.focus(); }
+  function gameCard(j, pre){
+    bot((pre ? pre + "<br>" : "") + "<b>" + esc(j.nombre) + "</b><br>" + esc(j.plataforma) + (j.categoria ? " · " + esc(j.categoria) : "") + "<br>💾 " + gb(j.pesoGB) + " · " + ars(j.precio), [
+      { t:"Ver detalle", fn: () => { closeBot(); showGame(j.nombre); } },
+      { t:"Agregar a mi pendrive", pri:true, fn: () => { closeBot(); goGame(j.nombre); } }
+    ]);
+  }
+  /* Búsqueda tolerante: errores de tipeo, personajes y temas */
+  const PERS = [ // [palabras que escribe el cliente, texto que está en el nombre del juego]
+    [/goku|vegeta|gohan|trunks|freezer|frieza|bola de dragon|dragonball|dragon ball|kamehameha|piccolo/, "dragon ball"],
+    [/naruto|sasuke|kakashi|sakura|itachi|ninja|shippuden/, "naruto"],
+    [/crash|bandicoot|cortex|coco|zorro|marsupial/, "crash"],
+    [/kratos|dios griego|espartano|olimpo/, "god of war"],
+    [/spider ?man|hombre arana|peter parker|venom|arana/, "spider man"],
+    [/\bcj\b|carl johnson|tommy vercetti|claude|gta|grand theft|vice city|san andreas|liberty city|gangster|mafia/, "grand theft auto"],
+    [/pyramid|piramide|james sunderland|heather|henry townshend|walter sullivan/, "silent hill"],
+    [/leon|kennedy|ashley|las plagas|plaga|zombie|zombi|resident/, "resident evil"],
+    [/scorpion|sub ?zero|raiden|liu kang|shao kahn|sonya|johnny cage|kombat|mortal/, "mortal kombat"],
+    [/\bryu\b|\bken\b|chun ?li|guile|akuma|ryu|street/, "street fighter"],
+    [/guitarra|guitar|rock|banda|metallica|aerosmith|van halen|cantar|musica/, "guitar hero"]
+  ];
+  const TEMAS = [ // [palabras, categoría del catálogo, frase]
+    [/terror|miedo|susto|horror|asusta|zombie|zombi|psicologico/, "Terror", "de terror"],
+    [/pelea|luchar|lucha|combate|vs|versus|golpes/, "Lucha", "de lucha"],
+    [/carrera|carreras|autos|correr|plataforma/, "Carreras y plataformas", "de carreras y plataformas"],
+    [/accion|mundo abierto|disparos|policia|ladron/, "Acción", "de acción"],
+    [/ritmo|musical|instrumento/, "Música", "de música"]
+  ];
+  const lev = (a, b) => { const m = a.length, n = b.length; if (Math.abs(m - n) > 2) return 9; let p = Array.from({ length: n + 1 }, (_, i) => i);
+    for (let i = 1; i <= m; i++){ const c = [i]; for (let k = 1; k <= n; k++) c[k] = Math.min(p[k] + 1, c[k - 1] + 1, p[k - 1] + (a[i - 1] === b[k - 1] ? 0 : 1)); p = c; } return p[n]; };
+  const ROM = { ii:"2", iii:"3", iv:"4", v:"5" };
+  const toks = t => norm(t).split(" ").filter(Boolean).map(w => ROM[w] || w);
+  function tokOk(q, nt){ // ¿el término q del cliente coincide con alguna palabra del nombre?
+    if (/^\d+$/.test(q)) return nt.includes(q);
+    return nt.some(w => w === q || (q.length >= 3 && (w.startsWith(q) || (w.length >= 4 && q.startsWith(w)))) || (q.length >= 4 && lev(q, w) <= (q.length >= 7 ? 2 : 1)));
+  }
+  function findGames(q){
+    const n = norm(q), res = { games: [], via: "" };
+    const qt = toks(q).map(w => ALIAS[w] || w).join(" ").split(" ").filter(w => (w.length > 1 || /^\d$/.test(w)) && !STOP.has(w));
+    if (qt.length){
+      const joined = qt.join("");
+      const sc = JUEGOS.map(j => { const nt = toks(j.nombre);
+        const ok = qt.every(w => tokOk(w, nt)) || (joined.length > 5 && !qt.some(w => /^\d+$/.test(w)) && lev(joined, nt.join("")) <= 2);
+        return ok ? { j, s: qt.filter(w => nt.includes(w)).length } : null; }).filter(Boolean).sort((a, b) => b.s - a.s);
+      if (sc.length) return { games: sc.map(x => x.j), via: "" };
+    }
+    for (const [re, key] of PERS){
+      if (re.test(n)){ const r = JUEGOS.filter(j => norm(j.nombre).includes(key)); if (r.length) return { games: r, via: "pers" }; }
+    }
+    for (const [re, cat, fr] of TEMAS){
+      if (re.test(n)){ const r = JUEGOS.filter(j => j.categoria === cat); if (r.length) return { games: r, via: "tema", fr }; }
+    }
+    return res;
+  }
+  function showGames(res){
+    const r = res.games;
+    if (r.length === 1) return gameCard(r[0], res.via ? "Creo que buscás este juego 👇" : "");
+    const intro = res.via === "pers" ? "Ese personaje o tema aparece en estos juegos" : res.via === "tema" ? "Tenemos estos juegos " + res.fr : "Encontré " + r.length + " juegos que se parecen a lo que escribiste";
+    bot(intro + (r.length > 6 ? " (te muestro 6, escribí más del nombre para afinar)" : "") + ":", r.slice(0, 6).map(j => ({ t: j.nombre, fn: () => { msg("me", esc(j.nombre)); gameCard(j); } })));
+  }
+  function answer(text){
+    const n = norm(text);
+    if (/^(hola|buenas|buen dia|buenas tardes|buenas noches|hey|holi)/.test(n) && n.split(" ").length <= 3) return greet();
+    if (/persona|humano|whatsapp|asesor|hablar con|messenger|contactar|vendedor/.test(n)) return handoff("¡Dale! 🙌");
+    const faq = BOT_FAQ.find(f => f.k.test(n));
+    if (faq){ const a = typeof faq.a === "function" ? faq.a() : faq.a; return (a && !todo(a)) ? bot(esc(a)) : handoff("Eso lo coordinamos directo con vos."); }
+    const r = findGames(text); if (r.games.length) return showGames(r);
+    if (/entran|caben|capacidad|cuantos juegos|espacio|\bgb\b/.test(n)) return capacity();
+    if (/precio|cuanto|cuesta|sale\b|valor|costo|cobran/.test(n)) return prices();
+    if (/servicio|opl|memory|memoria|\bhen\b|liberar|liberad|flashe|desbloque/.test(n)) return servicios();
+    if (/como|funciona|pedido|comprar|compra|armar|pasos/.test(n)) return how();
+    handoff("No encontré eso en la página.");
+  }
+  function ask(label, fn){ last = label; msg("me", esc(label)); (fn || (() => answer(label)))(); }
+  const CH = [["💲 Precios", prices], ["💾 ¿Cuántos juegos entran?", capacity], ["🎮 Servicios", servicios], ["🧭 ¿Cómo hago mi pedido?", how], ["🔎 Buscar un juego", askGame], ["🙋 Hablar con una persona", () => handoff("¡Dale! 🙌")]];
+  CH.forEach(([t, f]) => { const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = t; b.onclick = () => ask(t, f); chips.appendChild(b); });
+  fab.onclick = () => box.hidden ? openBot() : closeBot();
+  $("#botX").onclick = closeBot;
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !box.hidden) closeBot(); });
+  $("#botForm").onsubmit = e => { e.preventDefault(); const t = inp.value.trim(); if (!t) return; inp.value = ""; last = t; msg("me", esc(t)); answer(t); };
+}
+
 function start(){ initBusiness(); renderDevSelect(); renderBar(); renderGames(); renderProducts(); renderCart(); renderHome(); }
 fetch("juegoslevelup.json").then(r=>{ if(!r.ok) throw 0; return r.json(); }).then(j=>{ JUEGOS=j; start(); })
   .catch(()=>{ start(); $("#gGrid") && ($("#gGrid").innerHTML='<p class="mu">No se pudo cargar juegoslevelup.json. Abrí la página desde el hosting (o un servidor), no con doble clic al archivo.</p>'); });
+initBot();
 </script>
 </body>
 </html>
