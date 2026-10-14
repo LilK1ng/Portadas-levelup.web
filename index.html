@@ -144,6 +144,31 @@ footer .row{margin:10px 0}
 #botForm{display:flex;gap:6px;padding:8px 10px;border-top:1px solid var(--ln)}
 #botIn{flex:1;min-width:0}
 .dots{letter-spacing:3px;color:var(--mu)}
+#genGrid,.gens{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;max-width:1280px;margin:0 auto}
+.gens{margin:0 0 12px}
+.gen{position:relative;min-height:54px;border:1px solid var(--ln);border-radius:6px;background:color-mix(in srgb,var(--ps2) 22%,var(--pn));color:var(--tx);font:700 .74rem "Trebuchet MS",sans-serif;text-transform:uppercase;text-align:left;padding:8px 36px 8px 10px;display:flex;align-items:center;cursor:pointer;line-height:1.2}
+.gen:hover{border-color:var(--ps2)}
+.gen.on{background:var(--ps2);border-color:var(--ps2);color:#fff}
+.gen svg{position:absolute;top:50%;right:9px;transform:translateY(-50%);opacity:.75}
+#dock{background:var(--pn)!important;border:1px solid var(--ln)}
+#hPen{display:flex;align-items:center;gap:10px;margin-left:8px;border:1px solid var(--ln);background:#161b26;color:var(--tx);border-radius:26px;padding:8px 16px;min-height:44px;font:700 .85rem "Trebuchet MS",sans-serif;text-transform:uppercase;cursor:pointer;box-shadow:inset 0 -2px 0 #0006}
+#hPen:hover{border-color:var(--ps2)}
+body{padding-bottom:100px}
+#dock{display:flex;position:fixed;left:12px;right:12px;margin:0 auto;max-width:520px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:44;background:var(--pn);border-radius:28px;padding:6px;box-shadow:0 6px 24px #000a;justify-content:space-around}
+#dock>*{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-height:58px;border:0;background:none;color:#7a2fa8;font:700 .72rem "Trebuchet MS",Verdana,sans-serif;color:var(--tx);border-radius:24px;cursor:pointer;text-decoration:none;padding:4px 2px}
+#dock>* svg{color:#7a2fa8;color:var(--ps2)}
+#dock>.on{background:#242d42}
+#dock i{position:absolute;top:2px;right:calc(50% - 26px);background:#d23a3a;color:#fff;font:700 .65rem/1 Verdana,sans-serif;min-width:18px;padding:3px 5px;border-radius:9px;text-align:center}
+@media(min-width:821px){#dock{max-width:440px}}
+#q{scroll-margin-top:78px}
+body.kb #dock,body.kb #botFab{display:none!important}
+body.kb #botBox{bottom:12px!important;height:min(420px,calc(100vh - 24px))!important}
+@media(max-width:820px){
+ #hPen{margin-left:auto;padding:6px 12px;font-size:.72rem;gap:8px}#hPen svg{width:22px;height:22px}
+ #menuBtn{margin-left:0!important}#cartBtn{display:none}
+ #botFab{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+ #botBox{bottom:calc(152px + env(safe-area-inset-bottom,0px));height:min(520px,calc(100vh - 230px))}
+}
 @media(max-width:820px){#menuBtn{display:block;margin-left:auto}nav{display:none;position:absolute;top:100%;left:0;right:0;background:#0a0d13;flex-direction:column;border-bottom:1px solid var(--ln);padding:6px 10px}nav.open{display:flex}nav a{padding:14px 8px;font-size:1rem}.hero h1{font-size:2rem}}
 </style>
 </head>
@@ -153,6 +178,7 @@ footer .row{margin:10px 0}
   <nav id="nav">
     <a href="#inicio">Inicio</a><a href="#juegos" data-p="PS2">PS2</a><a href="#juegos" data-p="PS3">PS3</a><a href="#juegos" data-p="Xbox 360">Xbox 360</a><a href="#productos">Productos</a><a href="#servicios">Servicios</a><a href="#proximamente">Próximamente</a><a href="#contacto">Contacto</a>
   </nav>
+  <button id="hPen" type="button" aria-label="Armá tu pendrive"><span>Armá tu pendrive</span><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="9" width="12" height="13" rx="2"/><path d="M8.5 9V2.8h7V9"/><path d="M10.5 5.2h.01M13.5 5.2h.01"/><path d="M9.5 15h5"/></svg></button>
   <button class="btn" id="cartBtn" aria-label="Abrir carrito">🛒 <span id="cnt">0</span></button>
   <button class="btn" id="menuBtn" aria-label="Menú">☰</button>
 </header>
@@ -169,11 +195,6 @@ footer .row{margin:10px 0}
   <div id="heroLogo"></div>
   <p id="slogan" style="font-size:1.1rem;color:var(--tx)"></p>
   <div id="desc" class="desc"></div>
-  <div class="row">
-    <a class="btn pri" href="#productos">Ver productos</a>
-    <a class="btn" href="#juegos">Ver juegos</a>
-    <a class="btn" id="waHero" target="_blank" rel="noopener">Contactar por WhatsApp</a>
-  </div>
   <div class="tiles">
     <button class="tile" style="--c:var(--ps2)" data-p="PS2">PS2</button>
     <button class="tile" style="--c:var(--ps3)" data-p="PS3">PS3</button>
@@ -200,6 +221,11 @@ footer .row{margin:10px 0}
   <div class="carw"><button class="arw l" data-car="carNin" data-dir="-1" aria-label="Anterior">‹</button><div class="car" id="carNin"></div><button class="arw r" data-car="carNin" data-dir="1" aria-label="Siguiente">›</button></div>
 </section>
 
+<section class="cr" id="generos" aria-label="Géneros">
+  <h2>Géneros</h2>
+  <div id="genGrid"></div>
+</section>
+
 <section id="juegos" hidden>
 <div class="bwrap"><div class="bside">
   <div class="row" style="justify-content:flex-end;margin:0 0 6px"><button class="btn" id="bClose">✕ Cerrar</button></div>
@@ -222,7 +248,7 @@ footer .row{margin:10px 0}
 </div><div class="bmain">
   <div class="ctl"><input id="q" type="search" placeholder="🔎 Buscar juego..."><select id="fSort"><option value="n">Nombre</option><option value="s">Tamaño ↑</option><option value="sd">Tamaño ↓</option></select></div>
   <div class="chips" id="gChips"></div>
-  <div class="chips" id="gCats"></div>
+  <div class="gens" id="gCats"></div>
   <div class="grid" id="gGrid"></div>
 </div></div>
 </section>
@@ -252,6 +278,12 @@ footer .row{margin:10px 0}
   <div class="mu" style="margin-top:10px">Precios en pesos argentinos (ARS)</div>
 </footer>
 
+<div id="dock" role="navigation" aria-label="Navegación rápida">
+  <button type="button" data-dk="home" class="on"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 3 2 12h3v8h5v-5h4v5h5v-8h3z"/></svg><span>Home</span></button>
+  <button type="button" data-dk="buscar"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span>Buscar</span></button>
+  <button type="button" data-dk="carrito"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M1 2h3.5l.6 3H22l-2.3 9H7.3l.4 2H20v2H6l-2.6-13H1z"/><circle cx="8.5" cy="21" r="1.8"/><circle cx="18" cy="21" r="1.8"/></svg><span>Carrito</span><i id="dkCnt" hidden>0</i></button>
+  <a id="dkWa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#25d366"/><path d="M12 5.2a6.8 6.8 0 0 0-5.8 10.3L5.3 18.7l3.3-.9A6.8 6.8 0 1 0 12 5.2z" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 9c.2-.4.4-.4.6-.4h.4c.1 0 .3 0 .4.3l.6 1.4c0 .1 0 .3-.1.4l-.4.5c.5 1 1.3 1.7 2.3 2.2l.5-.6c.1-.1.3-.2.4-.1l1.4.7c.2.1.3.2.2.5-.1.6-.6 1.1-1.3 1.2-1.9.1-5-2.2-5.2-4.3 0-.5.2-.9.6-1.2z" fill="#fff"/></svg><span>WhatsApp</span></a>
+</div>
 <div id="bot">
   <button id="botFab" aria-expanded="false" aria-controls="botBox"><span aria-hidden="true">🕹️</span> Josticksito</button>
   <section id="botBox" role="dialog" aria-label="Josticksito, asistente de LevelUp" hidden>
@@ -302,7 +334,6 @@ const NEGOCIO = {
    estado: "disponible" | "proximamente" | "agotado" */
 const DISPOSITIVOS = [
   { id:"pen64",  tipo:"Pendrives", nombre:"Pendrive 64 GB",  capacidadComercial:"64 GB", capacidadTotalGB:64, capacidadJuegosGB:52, precio:20000, juegosGratis:0, imagen:"", estado:"disponible" },
-  { id:"pen128", tipo:"Pendrives", nombre:"Pendrive 128 GB", capacidadComercial:"128 GB", capacidadTotalGB:128, capacidadJuegosGB:110, precio:0 /* [RELLENAR] */, juegosGratis:0, imagen:"", estado:"disponible" },
   { id:"pen32",  tipo:"Pendrives", soloInstala:true, nombre:"Pendrive 32 GB", capacidadComercial:"32 GB", capacidadTotalGB:32, capacidadJuegosGB:26, precio:0, juegosGratis:0, imagen:"", estado:"disponible" },
   { id:"hdd160", tipo:"Discos rígidos", nombre:"Disco rígido 160 GB", capacidadComercial:"160 GB", capacidadTotalGB:160, capacidadJuegosGB:140, precio:0 /* [RELLENAR] */, juegosGratis:0, imagen:"", estado:"disponible" },
   { id:"hdd250", tipo:"Discos rígidos", soloInstala:true, nombre:"Disco rígido 250 GB", capacidadComercial:"250 GB", capacidadTotalGB:250, capacidadJuegosGB:225, precio:0, juegosGratis:0, imagen:"", estado:"disponible" },
@@ -464,7 +495,7 @@ function initBusiness(){
   $("#fLogo").innerHTML = logoHTML(48);
   [["#slogan","slogan"],["#fSlogan","slogan"],["#fLoc","ubicacion"]].forEach(([s,k])=>{ const e=$(s); e.textContent = NEGOCIO[k]; if(todo(NEGOCIO[k])) e.classList.add("todo"); });
   const wa = waUrl("Hola LevelUp, quiero hacer una consulta.");
-  $("#waHero").href = wa;
+  if ($("#waHero")) $("#waHero").href = wa;
   $("#fLinks").innerHTML = [["Instagram", NEGOCIO.instagram],["Facebook Marketplace", NEGOCIO.marketplace],["WhatsApp", wa]]
     .map(([n,u])=>`<a class="btn" target="_blank" rel="noopener" href="${esc(link(u))}">${n}</a>`).join("");
 }
@@ -485,7 +516,7 @@ function setMode(m, quiet){
   $("#addDev").textContent = "Agregar al carrito"; say("");
   $("#bTitle").textContent = m==="todos" ? "Armá tu pendrive o disco" : "Armá tu pendrive";
   const n = $("#bNote"); n.style.display = m==="todos" ? "none" : "block";
-  n.textContent = m==="nuevo" ? "Pendrive nuevo con tus juegos: elegí 64 GB o 128 GB y sumá los juegos." : "Traé tu pendrive o disco rígido y te instalamos los juegos. Elegí el tipo y la capacidad.";
+  n.textContent = m==="nuevo" ? "Pendrive nuevo con tus juegos: elegí la capacidad y sumá los juegos." : "Traé tu pendrive o disco rígido y te instalamos los juegos. Elegí el tipo y la capacidad.";
   renderTipoRow(); renderDevSelect(); renderBar(); renderGames();
   if (!quiet) $("#juegos").scrollIntoView();
 }
@@ -528,7 +559,7 @@ function renderGames(){
   let l = base.filter(j => gCat==="Todas"||j.categoria===gCat);
   l.sort((a,b)=> so==="s"?a.pesoGB-b.pesoGB : so==="sd"?b.pesoGB-a.pesoGB : a.nombre.localeCompare(b.nombre));
   $("#gChips").innerHTML = ["Todas","PS2","PS3","Xbox 360"].map(p=>`<button class="chip ${p===fPlat?"on":""}" data-gp="${p}">${p}</button>`).join("");
-  $("#gCats").innerHTML = CATS.filter(c=>c==="Todas"||base.some(j=>j.categoria===c)).map(c=>`<button class="chip ${c===gCat?"on":""}" data-gc="${c}">${c==="Todas"?"Todas las categorías":c} (${c==="Todas"?base.length:base.filter(j=>j.categoria===c).length})</button>`).join("");
+  $("#gCats").innerHTML = CATS.filter(c=>c==="Todas"||base.some(j=>j.categoria===c)).map(c=>genTile(c, c==="Todas"?"Todas":c, "data-gc", c===gCat)).join("");
   $("#gGrid").innerHTML = l.map(j => {
     const on = sel.games.includes(j.nombre);
     const bg = j.portada ? `background-image:url('${esc(j.portada)}')` : "";
@@ -613,7 +644,7 @@ document.addEventListener("click", e => {
   }
   if (D.g) return toggleGame(D.g);
   if (D.gp){ fPlat = D.gp; return renderGames(); }
-  if (D.gc){ gCat = D.gc; return renderGames(); }
+  if (D.gc){ gCat = D.gc; renderGames(); return scrollList(); }
   if (D.pc){ fCat = D.pc; return renderProducts(); }
   if (D.st){ const el = document.getElementById("o-"+D.st); el.classList.toggle("open"); b.textContent = el.classList.contains("open") ? "Ocultar opciones" : "Elegir opción"; return; }
   if (D.tipo){ tipoSel = D.tipo; sel = {dev:null, games:[]}; say(""); renderTipoRow(); renderDevSelect(); renderBar(); renderGames(); return; }
@@ -796,10 +827,54 @@ function initBot(){
   $("#botForm").onsubmit = e => { e.preventDefault(); const t = inp.value.trim(); if (!t) return; inp.value = ""; last = t; msg("me", esc(t)); answer(t); };
 }
 
+function initDock(){
+  const dk = $("#dock"), on = k => dk.querySelectorAll("[data-dk]").forEach(b => b.classList.toggle("on", b.dataset.dk === k));
+  $("#dkWa").href = waUrl("Hola LevelUp, tengo una consulta.");
+  const upd = () => { const n = cart.reduce((t, i) => t + i.q, 0), c = $("#dkCnt"); c.textContent = n; c.hidden = !n; };
+  new MutationObserver(upd).observe($("#cnt"), { childList:true, characterData:true, subtree:true }); upd();
+  dk.addEventListener("click", e => {
+    const b = e.target.closest("[data-dk]"); if (!b) return; const k = b.dataset.dk;
+    if (k === "home"){ closeBuilder(); on("home"); scrollTo({ top:0, behavior:"smooth" }); }
+    if (k === "buscar"){ on("buscar"); if (bMode !== "todos") setMode("todos", true); openBuilder(); $("#q").value = ""; renderGames(); setTimeout(() => { $("#q").focus({ preventScroll:true }); }, 120); }
+    if (k === "carrito") openCart();
+  });
+  $("#closeCart").addEventListener("click", () => on($("#juegos").hidden ? "home" : "buscar"));
+  $("#ov").addEventListener("click", () => on($("#juegos").hidden ? "home" : "buscar"));
+  /* con el teclado abierto: la barra de abajo y el botón del asistente se esconden, y el buscador sube a la parte de arriba */
+  document.addEventListener("focusin", e => { const t = e.target; if (!t.matches || !t.matches("input,textarea")) return;
+    document.body.classList.add("kb");
+    if (t.id === "q"){ /* sube hasta que el buscador quede justo debajo del encabezado; se repite porque el teclado tarda en abrirse y el navegador mueve la pantalla solo */
+      const go = () => { const m = document.querySelector(".bmain"); if (m) scrollTo({ top: Math.max(0, m.getBoundingClientRect().top + scrollY - 72), behavior:"auto" }); };
+      [150, 400, 800].forEach(ms => setTimeout(go, ms));
+      if (window.visualViewport){ const f = () => { go(); visualViewport.removeEventListener("resize", f); }; visualViewport.addEventListener("resize", f); setTimeout(() => visualViewport.removeEventListener("resize", f), 1500); } } });
+  document.addEventListener("focusout", () => setTimeout(() => { if (!document.activeElement || !document.activeElement.matches("input,textarea")) document.body.classList.remove("kb"); }, 150));
+  $("#hPen").onclick = () => { setMode("nuevo", true); focusDev(); on("buscar"); };
+}
+
+const GEN_IC = {
+  "Todas":'<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>',
+  "Acción":'<circle cx="12" cy="12" r="7"/><path d="M12 2v5M12 17v5M2 12h5M17 12h5"/>',
+  "Lucha":'<path d="M7 11V6a2 2 0 0 1 4 0v3m0-1a2 2 0 0 1 4 0v2m0-1a2 2 0 0 1 4 1v6a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6v-2a2 2 0 0 1 3-1.7"/>',
+  "Terror":'<path d="M5 12a7 7 0 1 1 14 0v3a2 2 0 0 1-2 2v3h-2v-2h-2v2h-2v-2H9v2H7v-3a2 2 0 0 1-2-2z"/><circle cx="9.3" cy="11.5" r="1.4"/><circle cx="14.7" cy="11.5" r="1.4"/>',
+  "Carreras y plataformas":'<path d="M5 22V3M5 4h13l-3 4 3 4H5"/>',
+  "Música":'<path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/>'
+};
+const GEN_DEF = '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 12h6M12 9v6"/>';
+const genTile = (c, label, attr, on) => `<button type="button" class="gen ${on?"on":""}" ${attr}="${esc(c)}">${esc(label)}<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${GEN_IC[c] || GEN_DEF}</svg></button>`;
+const scrollList = () => { const t = document.querySelector(".bmain"); if (t) scrollTo({ top: Math.max(0, t.getBoundingClientRect().top + scrollY - 72), behavior:"smooth" }); };
+function renderGeneros(){
+  const cats = [...new Set(JUEGOS.map(j => j.categoria).filter(Boolean))];
+  $("#genGrid").innerHTML = cats.map(c => genTile(c, c, "data-gen", false)).join("");
+  $("#generos").hidden = !cats.length;
+  $("#genGrid").onclick = e => { const b = e.target.closest("[data-gen]"); if (!b) return;
+    fPlat = "Todas"; gCat = b.dataset.gen; if (bMode !== "todos") setMode("todos", true); openBuilder(); $("#q").value = ""; renderGames();
+    setTimeout(scrollList, 100); };
+}
+
 function start(){ initBusiness(); renderDevSelect(); renderBar(); renderGames(); renderProducts(); renderCart(); renderHome(); }
 fetch("juegoslevelup.json").then(r=>{ if(!r.ok) throw 0; return r.json(); }).then(j=>{ JUEGOS=j; start(); })
-  .catch(()=>{ start(); $("#gGrid") && ($("#gGrid").innerHTML='<p class="mu">No se pudo cargar juegoslevelup.json. Abrí la página desde el hosting (o un servidor), no con doble clic al archivo.</p>'); });
-initBot();
+  .catch(()=>{ start(); $("#gGrid") && ($("#gGrid").innerHTML='<p class="mu">No se pudo cargar juegoslevelup.json. Abrí la página desde el hosting (o un servidor), no con doble clic al archivo.</p>'); }); renderGeneros();
+initBot(); initDock();
 </script>
 </body>
 </html>
