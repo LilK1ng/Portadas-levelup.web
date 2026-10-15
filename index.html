@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>LEVELUP</title>
+<link rel="preload" as="image" href="imagenes/banner.webp" fetchpriority="high">
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#0d1017;--pn:#161b26;--ln:#2a3142;--tx:#dfe4ee;--mu:#8d97ab;--ps2:#4a6fd0;--ps3:#aeb6c4;--xb:#6aa84f;--wn:#d9a441;--bd:#c0594f;color-scheme:dark}
 html{scroll-padding-top:70px;scroll-behavior:smooth}
@@ -102,6 +103,7 @@ footer .row{margin:10px 0}
 .cc span{font-size:.78rem;line-height:1.25;padding:8px;height:calc(2.5em + 16px);flex:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .arw{position:absolute;top:calc(50% - 22px);z-index:2;width:38px;height:38px;border-radius:50%;border:1px solid var(--ln);background:#0a0d13e6;color:var(--tx);font-size:1.3rem;line-height:1;cursor:pointer}
 .arw:hover{border-color:var(--ps2)}.arw.l{left:-8px}.arw.r{right:-8px}
+@media(min-width:1180px){.arw.l{left:-50px}.arw.r{right:-50px}}
 @media(hover:none){.arw{display:none}}
 .cr.small .cc{flex:0 0 220px}
 .cr.small .cv{aspect-ratio:16/9}
@@ -118,6 +120,8 @@ footer .row{margin:10px 0}
 .gd .acts{display:flex;gap:8px;flex-wrap:wrap}
 @media(max-width:560px){.gd{grid-template-columns:1fr}.gd .gc{width:180px;margin:0 auto}}
 .building .cr,.building .bnr{display:none!important}
+.car>.card{flex:0 0 240px;scroll-snap-align:start}
+.car>p{margin:0}
 @keyframes pls{0%,100%{box-shadow:0 0 0 0 #4a6fd000}50%{box-shadow:0 0 0 5px #4a6fd0aa}}
 #dev.pulse{animation:pls .6s ease-in-out 3;border-color:var(--ps2)}
 .building #inicio{padding-bottom:0}
@@ -133,6 +137,35 @@ footer .row{margin:10px 0}
 .bnr{max-width:1100px;margin:0 auto;padding:16px 16px 0}
 .bnr .bimg{position:relative;width:100%;aspect-ratio:var(--bar,1024/285);border-radius:8px;overflow:hidden;border:1px solid var(--ln);background:#0a0d13}
 .bnr img{width:100%;height:100%;object-fit:cover;display:block}
+.bnr{max-width:none;padding:0}
+.bnr .bimg{aspect-ratio:auto;height:clamp(250px,64vw,420px);border-radius:0;border:0}
+.bnr .bshade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,16,23,.35) 0%,rgba(13,16,23,.15) 45%,var(--bg) 100%);pointer-events:none}
+.bnr .blogo{position:absolute;left:0;right:0;top:0;bottom:28px;display:flex;align-items:center;justify-content:center}
+.bnr .blogo img{border-radius:12px;box-shadow:0 6px 22px rgba(0,0,0,.65)}
+.hero{padding-top:6px}
+.dlg{border:1px solid var(--ln);background:var(--bg);color:var(--tx);border-radius:10px;padding:0;width:min(440px,calc(100vw - 24px));max-height:calc(100vh - 24px)}
+.dlg::backdrop{background:rgba(0,0,0,.65)}
+.dlg .db{padding:20px 18px;display:flex;flex-direction:column;gap:12px}
+.dlg h3{margin:0;font-size:1.12rem}
+.dlg p{margin:0;color:var(--mu);font-size:.92rem}
+.dlg .dact{display:flex;flex-direction:column;gap:8px}
+.dlg input[type=text]{width:100%;box-sizing:border-box;background:var(--pn);border:1px solid var(--ln);color:var(--tx);padding:11px;border-radius:4px;font:inherit}
+.dlg details{border:1px solid var(--ln);border-radius:6px;padding:8px 10px;background:var(--pn)}
+.dlg summary{cursor:pointer;font-size:.92rem}
+.dlg figure{margin:12px 0 0}.dlg figure svg{width:100%;height:auto;border-radius:6px;background:#0a0d13;display:block}
+.dlg figcaption{font-size:.84rem;color:var(--mu);margin-top:6px}
+.dlg .chips{justify-content:flex-start;margin:0}
+.card.hl{outline:3px solid var(--ps2);outline-offset:-3px;animation:hlp 1.2s ease-in-out 3;background:#1a2440}
+@keyframes hlp{0%,100%{outline-color:var(--ps2)}50%{outline-color:#9db6ff}}
+.mpick{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mcard{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--pn);border:1px solid var(--ln);color:var(--tx);border-radius:8px;padding:8px;font:inherit;cursor:pointer}
+.mcard:hover,.mcard:focus-visible{border-color:var(--ps2)}
+.mcard svg{width:100%;height:auto;border-radius:5px;display:block}
+.mcard b{font-size:1rem}.mcard span{font-size:.8rem;color:var(--mu);line-height:1.35}.mcard small{font-size:.74rem;color:var(--ps3)}
+.scph{display:flex;align-items:stretch;border:1px solid var(--ln);border-radius:4px;overflow:hidden;background:var(--pn)}
+.scph span{display:flex;align-items:center;padding:0 10px;background:#0a0d13;color:var(--mu);font-weight:700;letter-spacing:1px;border-right:1px solid var(--ln)}
+.scph input{flex:1;min-width:0;border:0!important;background:transparent!important;font-size:1.05rem;letter-spacing:2px}
+
 .bnr .bph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;padding:12px;border:2px dashed #3a4560;border-radius:8px;color:var(--mu);font-size:.9rem;background:repeating-linear-gradient(45deg,#0d1220 0 14px,#101728 14px 28px)}
 .bnr .bph b{color:var(--tx);font-size:1rem;letter-spacing:1px}
 .bnr .bph small{font-size:.76rem}
@@ -201,20 +234,16 @@ body.kb #botBox{bottom:12px!important;height:min(420px,calc(100vh - 24px))!impor
 <main>
 <section class="bnr" id="banner" aria-label="Banner">
   <div class="bimg">
-    <img id="bnrImg" alt="LevelUp" hidden>
-    <div class="bph" id="bnrPh"><b>ESPACIO PARA EL BANNER</b><span>Medida recomendada: 1600 × 450 px (proporción 3,6 : 1)</span></div>
+    <img id="bnrImg" src="imagenes/banner.webp" alt="LevelUp" loading="eager" fetchpriority="high" decoding="sync">
+    <div class="bph" id="bnrPh" hidden><b>ESPACIO PARA EL BANNER</b><span>Medida recomendada: 1600 × 450 px (proporción 3,6 : 1)</span></div>
+    <div class="bshade"></div>
+    <div id="heroLogo" class="blogo"></div>
   </div>
 </section>
 
 <section id="inicio" class="hero">
-  <div id="heroLogo"></div>
   <p id="slogan" style="font-size:1.1rem;color:var(--tx)"></p>
   <div id="desc" class="desc"></div>
-  <div class="tiles">
-    <button class="tile" style="--c:var(--ps2)" data-p="PS2">PS2</button>
-    <button class="tile" style="--c:var(--ps3)" data-p="PS3">PS3</button>
-    <button class="tile" style="--c:var(--xb)" data-p="Xbox 360">Xbox 360</button>
-  </div>
 </section>
 
 <section class="cr small" id="galeria" aria-label="Galería">
@@ -226,14 +255,14 @@ body.kb #botBox{bottom:12px!important;height:min(420px,calc(100vh - 24px))!impor
   <div class="carw"><button class="arw l" data-car="carRec" data-dir="-1" aria-label="Anterior">‹</button><div class="car" id="carRec"></div><button class="arw r" data-car="carRec" data-dir="1" aria-label="Siguiente">›</button></div>
 </section>
 
-<section class="cr" id="alazar" aria-label="Algunos juegos">
-  <h2>Algunos juegos</h2>
-  <div class="carw"><button class="arw l" data-car="carRnd" data-dir="-1" aria-label="Anterior">‹</button><div class="car" id="carRnd"></div><button class="arw r" data-car="carRnd" data-dir="1" aria-label="Siguiente">›</button></div>
+<section class="cr" id="productos" aria-label="Productos">
+  <h2>Productos</h2>
+  <div class="carw"><button class="arw l" data-car="pGrid" data-dir="-1" aria-label="Anterior">‹</button><div class="car" id="pGrid"></div><button class="arw r" data-car="pGrid" data-dir="1" aria-label="Siguiente">›</button></div>
 </section>
 
-<section class="cr" id="ninos" aria-label="Juegos para niños">
-  <h2>Juegos para niños</h2>
-  <div class="carw"><button class="arw l" data-car="carNin" data-dir="-1" aria-label="Anterior">‹</button><div class="car" id="carNin"></div><button class="arw r" data-car="carNin" data-dir="1" aria-label="Siguiente">›</button></div>
+<section class="cr" id="servicios" aria-label="Servicios">
+  <h2>Servicios</h2>
+  <div class="carw"><button class="arw l" data-car="sGrid" data-dir="-1" aria-label="Anterior">‹</button><div class="car" id="sGrid"></div><button class="arw r" data-car="sGrid" data-dir="1" aria-label="Siguiente">›</button></div>
 </section>
 
 <section class="cr" id="generos" aria-label="Géneros">
@@ -268,17 +297,6 @@ body.kb #botBox{bottom:12px!important;height:min(420px,calc(100vh - 24px))!impor
 </div></div>
 </section>
 
-<section id="productos">
-  <h2>Productos</h2>
-  <div class="chips" id="pChips"></div>
-  <div class="grid" id="pGrid"></div>
-</section>
-
-<section id="servicios">
-  <h2>Servicios</h2>
-  <div class="grid" id="sGrid"></div>
-</section>
-
 <section id="proximamente">
   <h2>Próximamente</h2>
   <div class="grid" id="prGrid"></div>
@@ -308,6 +326,68 @@ body.kb #botBox{bottom:12px!important;height:min(420px,calc(100vh - 24px))!impor
     <form id="botForm"><input id="botIn" placeholder="Escribí tu consulta..." autocomplete="off" enterkeyhint="send" aria-label="Tu consulta"><button class="btn pri" type="submit">Enviar</button></form>
   </section>
 </div>
+<dialog id="oplDlg" class="dlg" aria-label="¿Tenés OPL instalado?"><div class="db">
+  <h3>¿Tenés OPL instalado en tu memory?</h3>
+  <p>Para jugar desde un pendrive o disco rígido, tu PS2 necesita tener <b>OPL</b> instalado en la memory card.</p>
+  <div class="dact"><button class="btn pri" id="oplYes" type="button">✅ Ya lo tengo instalado</button><button class="btn" id="oplNo" type="button">❌ No lo tengo instalado</button></div>
+</div></dialog>
+<dialog id="mdlDlg" class="dlg" aria-label="Modelo de tu PS2"><div class="db">
+  <div id="mdlS1" class="db" style="padding:0">
+    <h3>¿Qué modelo es tu PS2?</h3>
+    <p>Elegí cuál se parece a la tuya. Lo necesitamos para dejarte la memory con OPL correcta.</p>
+    <div class="mpick">
+      <button class="mcard" type="button" data-mt="Fat (gruesa)"><svg viewBox="0 0 160 90" role="img" aria-label="PS2 Fat"><rect width="160" height="90" fill="#0a0d13"/><rect x="12" y="14" width="136" height="62" rx="8" fill="#161b26" stroke="#8d97ab" stroke-width="2"/><rect x="104" y="26" width="34" height="38" rx="3" fill="#232b3d" stroke="#8d97ab"/><circle cx="34" cy="45" r="7" fill="#4a6fd0"/><rect x="50" y="40" width="40" height="10" rx="2" fill="#232b3d"/></svg><b>Fat</b><span>Más gruesa y grande, con bahía en un costado.</span><small>Modelos SCPH-3xxxx a 5xxxx</small></button>
+      <button class="mcard" type="button" data-mt="Slim (finita)"><svg viewBox="0 0 160 90" role="img" aria-label="PS2 Slim"><rect width="160" height="90" fill="#0a0d13"/><rect x="22" y="30" width="116" height="30" rx="6" fill="#161b26" stroke="#8d97ab" stroke-width="2"/><circle cx="40" cy="45" r="5" fill="#4a6fd0"/><rect x="56" y="41" width="40" height="8" rx="2" fill="#232b3d"/></svg><b>Slim</b><span>Más finita y liviana, la fuente va adentro.</span><small>Modelos SCPH-7xxxx o 9xxxx</small></button>
+    </div>
+    <button class="btn" type="button" data-mt="No sé">No sé cuál tengo</button>
+    <button class="btn" id="mdlNo" type="button">Cancelar</button>
+  </div>
+  <div id="mdlS2" class="db" style="padding:0" hidden>
+    <h3>Tu PS2: <span id="mdlPick"></span></h3>
+    <p>Ahora buscá el número de modelo. Hay dos formas:</p>
+    <details open><summary>📷 Opción A: la etiqueta de abajo</summary>
+      <figure><svg viewBox="0 0 320 150" role="img" aria-label="Dar vuelta la consola y mirar la etiqueta de abajo"><rect width="320" height="150" fill="#0a0d13"/>
+      <g stroke="#8d97ab" fill="#161b26" stroke-width="2"><rect x="18" y="38" width="120" height="62" rx="7"/><rect x="182" y="38" width="120" height="62" rx="7"/></g>
+      <text x="78" y="74" fill="#8d97ab" font-size="11" text-anchor="middle" font-family="Verdana">PARTE DE ARRIBA</text>
+      <path d="M146 69h28m-8-7 8 7-8 7" stroke="#dfe4ee" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <rect x="206" y="52" width="72" height="34" rx="3" fill="#dfe4ee"/><text x="242" y="67" fill="#0d1017" font-size="8" text-anchor="middle" font-family="Verdana">MODEL NO.</text><text x="242" y="80" fill="#0d1017" font-size="10" font-weight="bold" text-anchor="middle" font-family="Verdana">SCPH-xxxxx</text>
+      <text x="242" y="120" fill="#8d97ab" font-size="11" text-anchor="middle" font-family="Verdana">PARTE DE ABAJO</text>
+      <text x="160" y="22" fill="#dfe4ee" font-size="12" text-anchor="middle" font-family="Verdana" font-weight="bold">1 · Dá vuelta la consola</text></svg>
+      <figcaption>Apagala, desenchufala y dala vuelta: abajo hay una etiqueta blanca.</figcaption></figure>
+      <figure><svg viewBox="0 0 320 130" role="img" aria-label="Etiqueta con el número de modelo SCPH"><rect width="320" height="130" fill="#0a0d13"/>
+      <rect x="30" y="30" width="260" height="72" rx="5" fill="#dfe4ee"/>
+      <rect x="40" y="40" width="70" height="8" fill="#9aa3b5"/><rect x="40" y="54" width="110" height="6" fill="#b8bfcd"/><rect x="40" y="66" width="90" height="6" fill="#b8bfcd"/><rect x="40" y="80" width="130" height="6" fill="#b8bfcd"/>
+      <rect x="176" y="38" width="108" height="26" rx="4" fill="none" stroke="#d04a4a" stroke-width="3"/>
+      <text x="230" y="55" fill="#0d1017" font-size="13" font-weight="bold" text-anchor="middle" font-family="Verdana">SCPH-70012</text>
+      <text x="160" y="20" fill="#dfe4ee" font-size="12" text-anchor="middle" font-family="Verdana" font-weight="bold">2 · Buscá el número SCPH</text>
+      <text x="230" y="120" fill="#d04a4a" font-size="10.5" text-anchor="middle" font-family="Verdana">Este es el modelo (ejemplo)</text></svg>
+      <figcaption>Empieza con <b>SCPH-</b> y tiene 5 números. Sacale una foto y pasanos ese dato.</figcaption></figure>
+    </details>
+    <details open><summary>🎮 Opción B: desde la consola</summary>
+      <figure><svg viewBox="0 0 320 150" role="img" aria-label="Prender la PS2 sin disco y apretar triángulo"><rect width="320" height="150" fill="#0a0d13"/>
+      <text x="160" y="20" fill="#dfe4ee" font-size="12" text-anchor="middle" font-family="Verdana" font-weight="bold">1 · Prendela sin disco y tocá △</text>
+      <rect x="20" y="34" width="150" height="96" rx="6" fill="#161b26" stroke="#8d97ab" stroke-width="2"/><rect x="30" y="44" width="130" height="76" rx="3" fill="#0d1a3a"/>
+      <text x="95" y="76" fill="#9db6ff" font-size="12" text-anchor="middle" font-family="Verdana" font-weight="bold">PlayStation 2</text><text x="95" y="96" fill="#9db6ff" font-size="9" text-anchor="middle" font-family="Verdana">Menú sin disco (Browser)</text>
+      <rect x="196" y="62" width="104" height="52" rx="22" fill="#161b26" stroke="#8d97ab" stroke-width="2"/>
+      <circle cx="230" cy="74" r="9" fill="none" stroke="#5fb07a" stroke-width="2.5"/><path d="M230 67l6 10h-12z" fill="none" stroke="#5fb07a" stroke-width="2.2" stroke-linejoin="round" transform="translate(0,-3)"/>
+      <circle cx="230" cy="100" r="4" fill="#2a3142"/><circle cx="262" cy="86" r="4" fill="#2a3142"/><circle cx="284" cy="86" r="4" fill="#2a3142"/>
+      <text x="248" y="134" fill="#5fb07a" font-size="10.5" text-anchor="middle" font-family="Verdana">Botón triángulo (verde)</text></svg>
+      <figcaption>Sacá el disco, prendé la PS2 y esperá el menú azul. Con el joystick apretá el botón <b>triángulo</b>.</figcaption></figure>
+      <figure><svg viewBox="0 0 320 140" role="img" aria-label="Pantalla con los datos de la consola"><rect width="320" height="140" fill="#0a0d13"/>
+      <text x="160" y="20" fill="#dfe4ee" font-size="12" text-anchor="middle" font-family="Verdana" font-weight="bold">2 · Leé el modelo en pantalla</text>
+      <rect x="40" y="32" width="240" height="96" rx="6" fill="#0d1a3a" stroke="#8d97ab" stroke-width="2"/>
+      <text x="56" y="54" fill="#9db6ff" font-size="10" font-family="Verdana">Información de la consola</text>
+      <text x="56" y="74" fill="#9db6ff" font-size="9.5" font-family="Verdana">ROM versión: 2.20</text>
+      <rect x="52" y="82" width="150" height="18" rx="3" fill="none" stroke="#d04a4a" stroke-width="2.5"/><text x="58" y="95" fill="#dfe4ee" font-size="11" font-weight="bold" font-family="Verdana">Modelo: SCPH-70012</text>
+      <text x="56" y="118" fill="#d04a4a" font-size="9.5" font-family="Verdana">Ese es el dato (ejemplo)</text></svg>
+      <figcaption>Aparecen los datos de la consola. Buscá el que empieza con <b>SCPH-</b> y pasanos ese número (o una foto de la pantalla). El dibujo es de referencia: los textos pueden verse distintos según la consola.</figcaption></figure>
+    </details>
+    <label for="mdlNum" style="font-size:.9rem">Escribí solo el número:</label>
+    <div class="scph"><span>SCPH-</span><input type="text" id="mdlNum" inputmode="numeric" pattern="[0-9]*" placeholder="39004" autocomplete="off" aria-label="Número de modelo, 5 dígitos"></div>
+    <p id="mdlErr" style="color:#e08a8a" hidden>El número tiene 5 dígitos (por ejemplo 39004). Si no lo encontrás, dejalo vacío.</p>
+    <div class="dact"><button class="btn pri" id="mdlOk" type="button">Continuar</button><button class="btn" id="mdlBack" type="button">← Volver</button><button class="btn" id="mdlNo2" type="button">Cancelar</button></div>
+  </div>
+</div></dialog>
 <dialog id="gDlg" aria-label="Detalle del juego"><div id="gBody"></div></dialog>
 <div id="ov"></div>
 <aside id="cart" aria-label="Carrito">
@@ -370,6 +450,7 @@ const IMG_PENDRIVE = "imagenes/pendrive.webp";
 
 const PRODUCTOS = [
   { id:"mem-opl", nombre:"Memoria PS2 con OPL instalado", categoria:"PS2", plataforma:"PS2", precio:0 /* [RELLENAR] */, imagen:IMG_OPL, descripcion:"Memory card nueva con OPL listo para usar.", estado:"disponible" },
+  { id:"pendrive-nuevo", nombre:"Pendrive nuevo con juegos a elección", categoria:"PS2", plataforma:"PS2", precio:0 /* [RELLENAR] */, imagen:IMG_PENDRIVE, descripcion:"Pendrive nuevo cargado con los juegos de PS2 que elijas, listo para jugar.", estado:"disponible", va:"nuevo" },
   { id:"disco-ps2", nombre:"Disco rígido con juegos PS2", categoria:"PS2", plataforma:"PS2", precio:0 /* [RELLENAR] */, imagen:"", descripcion:"Disco rígido cargado con juegos.", estado:"agotado" },
   { id:"consola-ps2", nombre:"Consola PS2", categoria:"PS2", plataforma:"PS2", precio:0, imagen:"", descripcion:"Consolas PS2 listas para jugar.", estado:"proximamente" },
   { id:"consola-ps3", nombre:"Consola PS3", categoria:"PS3", plataforma:"PS3", precio:0, imagen:"", descripcion:"Consolas PS3 revisadas.", estado:"proximamente" },
@@ -384,8 +465,7 @@ const SERVICIOS = [
   { id:"opl", nombre:"Instalar OPL en tu memory", imagen:IMG_OPL, descripcion:"Traé tu memory card y te la dejamos con OPL instalado, lista para correr tus juegos de PS2 desde pendrive o disco.", precio:0 /* [RELLENAR] */, activo:true },
   { id:"fmcb", nombre:"Memory con OPL", imagen:IMG_OPL, descripcion:"Memory card con OPL instalado, lista para jugar. Elegí si la querés nueva o usada.", precio:0, activo:true,
     opciones:[ { id:"nueva", nombre:"Memory nueva con OPL", precio:0 /* [RELLENAR] */ }, { id:"usada", nombre:"Memory usada con OPL", precio:0 /* [RELLENAR] */ } ] },
-  { id:"pendrive", nombre:"Juega por pendrive", imagen:IMG_PENDRIVE, descripcion:"Jugá tus juegos de PS2 directo desde un pendrive. Elegí si querés un pendrive nuevo con juegos o que instalemos los juegos en el tuyo.", precio:0, activo:true,
-    opciones:[ { id:"nuevo", nombre:"Pendrive nuevo con juegos", va:"nuevo", precio:0 /* [RELLENAR] */ }, { id:"instala", nombre:"Instala juegos en tu pendrive", va:"instala", precio:0 /* [RELLENAR] */ } ] },
+  { id:"pendrive", nombre:"Instalación de juegos en pendrive o disco rígido", imagen:IMG_PENDRIVE, descripcion:"Traé tu pendrive o disco rígido y te lo dejamos cargado con los juegos de PS2 que elijas, listo para conectar y jugar.", precio:0 /* [RELLENAR] */, activo:true, va:"instala" },
   { id:"hen", nombre:"Instalar HEN en tu PS3", imagen:IMG_HEN, descripcion:"Dejamos tu PS3 con HEN para que puedas correr juegos y aplicaciones.", precio:0 /* [RELLENAR] */, activo:true },
   { id:"x360", nombre:"Liberar Xbox 360", imagen:IMG_X360, descripcion:"Liberamos tu Xbox 360 para que puedas jugar tus juegos desde disco o pendrive.", precio:0 /* [RELLENAR] */, activo:true }
 ];
@@ -417,17 +497,10 @@ function renderHome(){
   renderBanner();
   let rec = RECOMENDADOS.map(n => juego(n)).filter(Boolean);
   if (!rec.length) rec = shuffle(JUEGOS).slice(0, 15);
-  const usados = new Set(rec.map(j => j.nombre));
-  const rnd = shuffle(JUEGOS.filter(j => !usados.has(j.nombre))).slice(0, 15);
-  rnd.forEach(j => usados.add(j.nombre));
-  let nin = NINOS.map(n => juego(n)).filter(Boolean);
-  if (!nin.length) nin = shuffle(JUEGOS.filter(j => !usados.has(j.nombre))).slice(0, 15);
   $("#carRec").innerHTML = rec.map(gCard).join("");
-  $("#carRnd").innerHTML = rnd.map(gCard).join("");
-  $("#carNin").innerHTML = nin.map(gCard).join("");
   $("#carGal").innerHTML = GALERIA.map((src, i) => `<div class="cc slot"><div class="cv" style="${src?`background-image:url('${esc(src)}')`:""}" ${src?`role="img" aria-label="Foto ${i+1}"`:""}></div></div>`).join("");
   lazyImgs();
-  $("#recomendados").hidden = !rec.length; $("#alazar").hidden = !rnd.length; $("#ninos").hidden = !nin.length;
+  $("#recomendados").hidden = !rec.length;
 }
 function showGame(n){
   const j = juego(n); if (!j) return;
@@ -440,10 +513,11 @@ function showGame(n){
   $("#gDlg").showModal();
 }
 function openBuilder(){
+  if ($("#juegos").hidden && !oplOK()){ oplAsk(() => openBuilder()); return; }
   $("#juegos").hidden = false; document.body.classList.add("building");
   requestAnimationFrame(() => $("#juegos").scrollIntoView({ block: "start" }));
 }
-function focusDev(){ /* sube hasta "Armá tu pendrive", espera a que termine de subir y recién ahí "toca" Elegí un dispositivo */
+function focusDev(){ if ($("#juegos").hidden) return; /* sube hasta "Armá tu pendrive", espera a que termine de subir y recién ahí "toca" Elegí un dispositivo */
   const sec = $("#juegos"), d = $("#dev");
   const go = () => {
     const top = Math.max(0, sec.getBoundingClientRect().top + scrollY - 70);
@@ -598,33 +672,65 @@ function renderGames(){
 function pCard(p){
   const cov = `<div class="cov wide" style="--c:${col(p.plataforma)};${p.imagen?`background-image:url('${esc(p.imagen)}')`:""}">${p.imagen?"":esc(p.nombre)}<small>${esc(p.plataforma)}</small></div>`;
   const ok = p.estado === "disponible";
-  const btn = ok ? `<button class="btn pri" data-p="${p.id}">Agregar al carrito</button>` : `<button class="btn" disabled>${ESTADO[p.estado]}</button>`;
-  return `<div class="card">${cov}<div class="cb"><b>${esc(p.nombre)}</b><span class="tag ${p.estado}">${ESTADO[p.estado]}</span><span class="mu">${esc(p.descripcion)}</span>${p.estado==="proximamente"?"":`<span class="pr ${p.precio?"":"todo"}">${p.precio?ars(p.precio):"Consultar"}</span>`}</div>${p.estado==="proximamente"?"":btn}</div>`;
+  const btn = ok ? (p.va ? `<button class="btn pri" data-go="${p.va}">Armar pendrive</button>` : `<button class="btn pri" data-p="${p.id}">Agregar al carrito</button>`) : `<button class="btn" disabled>${ESTADO[p.estado]}</button>`;
+  return `<div class="card" id="p-${p.id}">${cov}<div class="cb"><b>${esc(p.nombre)}</b><span class="tag ${p.estado}">${ESTADO[p.estado]}</span><span class="mu">${esc(p.descripcion)}</span>${p.estado==="proximamente"?"":`<span class="pr ${p.precio?"":"todo"}">${p.precio?ars(p.precio):"Consultar"}</span>`}</div>${p.estado==="proximamente"?"":btn}</div>`;
 }
 function renderProducts(){
   const cats = ["Todas","PS2","PS3","Xbox 360","Accesorios","Otros"];
-  $("#pChips").innerHTML = cats.map(c=>`<button class="chip ${c===fCat?"on":""}" data-pc="${c}">${c}</button>`).join("");
-  const l = PRODUCTOS.filter(p => p.estado !== "proximamente" && (fCat==="Todas"||p.categoria===fCat));
+  const l = PRODUCTOS.filter(p => p.estado !== "proximamente");
   $("#pGrid").innerHTML = l.map(pCard).join("") || `<p class="mu">No hay productos en esta categoría por ahora.</p>`;
   $("#prGrid").innerHTML = PRODUCTOS.filter(p => p.estado==="proximamente").map(pCard).join("") || `<p class="mu">Pronto vamos a sumar novedades.</p>`;
-  $("#sGrid").innerHTML = SERVICIOS.filter(s=>s.activo).map(s=>`<div class="card">${s.imagen?`<div class="cov wide" style="--c:var(--ps2);background-image:url('${s.imagen}')"></div>`:""}<div class="cb"><b>${esc(s.nombre)}</b><span class="mu ${todo(s.descripcion)?"todo":""}">${esc(s.descripcion)}</span><span class="pr ${s.precio?"":"todo"}">${s.precio?ars(s.precio):"Consultar"}</span></div>${s.opciones?`<button class="btn pri" data-st="${s.id}">Elegir opción</button><div class="opts" id="o-${s.id}">${s.opciones.map(o=>`<button class="btn" data-so="${s.id}|${o.id}">${esc(o.nombre)} · ${o.precio?ars(o.precio):"Consultar"}</button>`).join("")}</div>`:`<button class="btn pri" data-s="${s.id}">Agregar al carrito</button>`}</div>`).join("");
+  $("#sGrid").innerHTML = SERVICIOS.filter(s=>s.activo).map(s=>`<div class="card" id="s-${s.id}">${s.imagen?`<div class="cov wide" style="--c:var(--ps2);background-image:url('${s.imagen}')"></div>`:""}<div class="cb"><b>${esc(s.nombre)}</b><span class="mu ${todo(s.descripcion)?"todo":""}">${esc(s.descripcion)}</span><span class="pr ${s.precio?"":"todo"}">${s.precio?ars(s.precio):"Consultar"}</span></div>${s.opciones?`<button class="btn pri" data-st="${s.id}">Elegir opción</button><div class="opts" id="o-${s.id}">${s.opciones.map(o=>`<button class="btn" data-so="${s.id}|${o.id}">${esc(o.nombre)} · ${o.precio?ars(o.precio):"Consultar"}</button>`).join("")}</div>`:s.va?`<button class="btn pri" data-go="${s.va}">Elegir juegos</button>`:`<button class="btn pri" data-s="${s.id}">Agregar al carrito</button>`}</div>`).join("");
+}
+
+
+/* ---- ¿tiene OPL? / modelo de PS2 ---- */
+const OPL_IDS = ["opl","fmcb","mem-opl"];
+const oplOK = () => { try { return sessionStorage.getItem("lu_opl")==="si"; } catch(e){ return window._oplSi===true; } };
+function oplAsk(next){
+  if (oplOK()) return next && next();
+  const d = $("#oplDlg");
+  $("#oplYes").onclick = () => { try { sessionStorage.setItem("lu_opl","si"); } catch(e){} window._oplSi = true; d.close(); next && next(); };
+  $("#oplNo").onclick = () => { d.close(); closeBuilder(); if (window.JB) JB.explainOPL(); };
+  d.showModal();
+}
+function askModel(done){
+  const d = $("#mdlDlg"), s1 = $("#mdlS1"), s2 = $("#mdlS2"), num = $("#mdlNum"), err = $("#mdlErr"); let tipo = "";
+  const toTop = () => { closeBuilder(); scrollTo({ top:0, behavior:"smooth" }); };
+  s1.hidden = false; s2.hidden = true; num.value = ""; err.hidden = true;
+  s1.onclick = e => { const b = e.target.closest("[data-mt]"); if (!b) return; tipo = b.dataset.mt;
+    $("#mdlPick").textContent = tipo; s1.hidden = true; s2.hidden = false; d.scrollTop = 0; };
+  num.oninput = () => { num.value = num.value.replace(/\D/g, "").slice(0, 5); err.hidden = true; };
+  $("#mdlBack").onclick = () => { s2.hidden = true; s1.hidden = false; d.scrollTop = 0; };
+  d.oncancel = () => setTimeout(toTop, 0);
+  const cancel = () => { d.close(); toTop(); };
+  $("#mdlNo").onclick = cancel; $("#mdlNo2").onclick = cancel;
+  $("#mdlOk").onclick = () => {
+    const n = num.value.trim();
+    if (n && n.length !== 5){ err.hidden = false; return; }
+    d.close(); done([tipo, n ? "SCPH-" + n : ""].filter(Boolean).join(" · "));
+  };
+  d.showModal();
 }
 
 /* ---- carrito ---- */
 function addCart(it){ cart.push(it); save(); renderCart(); openCart(); }
-function addProd(id){ const p = prod(id); if(!p || p.estado!=="disponible") return;
-  const x = cart.find(i=>i.t==="prod"&&i.id===id); x ? x.q++ : cart.push({t:"prod",id,q:1}); save(); renderCart(); openCart(); }
-function addSrv(id,opt){ const s = srv(id); if(!s||!s.activo) return;
-  const x = cart.find(i=>i.t==="srv"&&i.id===id&&i.opt===opt); x ? x.q++ : cart.push(opt?{t:"srv",id,opt,q:1}:{t:"srv",id,q:1}); save(); renderCart(); openCart(); }
+function addProd(id,modelo){ const p = prod(id); if(!p || p.estado!=="disponible") return;
+  if (OPL_IDS.includes(id) && modelo===undefined) return askModel(m => addProd(id,m));
+  const x = cart.find(i=>i.t==="prod"&&i.id===id&&i.modelo===modelo); x ? x.q++ : cart.push(modelo?{t:"prod",id,q:1,modelo}:{t:"prod",id,q:1}); save(); renderCart(); openCart(); }
+function addSrv(id,opt,modelo){ const s = srv(id); if(!s||!s.activo) return;
+  if (OPL_IDS.includes(id) && modelo===undefined) return askModel(m => addSrv(id,opt,m));
+  const x = cart.find(i=>i.t==="srv"&&i.id===id&&i.opt===opt&&i.modelo===modelo); const n = {t:"srv",id,q:1}; if(opt) n.opt=opt; if(modelo) n.modelo=modelo;
+  x ? x.q++ : cart.push(n); save(); renderCart(); openCart(); }
 function orderText(name){
-  let t = "Hola LevelUp, quiero realizar este pedido:\n";
+  let t = "";
   cart.forEach(it => {
     if (it.t==="dev"){ const d=dev(it.id); if(!d) return; const u=usedGB(it.games)+reservGB(d);
       t += `\n${devLabel(it,d)}${it.q>1?" x"+it.q:""}\nJuegos:\n` + (it.games.map(n=>`- ${n} — ${gb(juego(n)?.pesoGB||0)}`).join("\n")||"- (sin juegos)") +
       `\nJuegos: ${gb(usedGB(it.games))} · Capacidad: ${gb(totalGB(d))}\nEspacio restante: ${gb(totalGB(d)-u)}\nSubtotal: ${ars(itemTotal(it))}\n`; }
-    else { const o = it.t==="prod"?prod(it.id):srv(it.id); if(o) t += `\n${it.t==="srv"?srvName(it):o.nombre} x${it.q} — ${ars(itemTotal(it))}\n`; }
+    else { const o = it.t==="prod"?prod(it.id):srv(it.id); if(o) t += `\n${it.t==="srv"?srvName(it):o.nombre} x${it.q} — ${ars(itemTotal(it))}\n${it.modelo?"Modelo de PS2: "+it.modelo+"\n":""}`; }
   });
-  return t + `\nTotal: ${ars(total())}\n\nNombre: ${name || "[Nombre del cliente]"}`;
+  return "👾 ¡Hola LevelUp! Quiero empezar una nueva partida con mi consola.\n\n🎯 MISIÓN: subir de nivel mi consola\n\n══════ PEDIDO ══════\n" + t.trim() + "\n═══════════════════\n\n💰 Total: " + ars(total()) + "\n\n🕹️ Jugador: " + (name || "[Nombre del cliente]");
 }
 function renderCart(){
   $("#cnt").textContent = cart.reduce((t,i)=>t+i.q,0);
@@ -633,7 +739,7 @@ function renderCart(){
     if (it.t==="dev"){ const d=dev(it.id); if(!d) return ""; const u=usedGB(it.games)+reservGB(d);
       head = `🕹️ ${esc(devLabel(it,d))}`;
       body = `<div class="mu">Capacidad: ${gb(totalGB(d))}</div><ul>${it.games.map(n=>`<li>✓ ${esc(n)} — ${gb(juego(n)?.pesoGB||0)}</li>`).join("")||"<li>Sin juegos</li>"}</ul><div class="mu">Espacio restante: ${gb(totalGB(d)-u)}</div>`; }
-    else { const o = it.t==="prod"?prod(it.id):srv(it.id); if(!o) return ""; head = esc(it.t==="srv"?srvName(it):o.nombre); }
+    else { const o = it.t==="prod"?prod(it.id):srv(it.id); if(!o) return ""; head = esc(it.t==="srv"?srvName(it):o.nombre); if (it.modelo) body = `<div class="mu">Modelo de PS2: ${esc(it.modelo)}</div>`; }
     return `<div class="it"><b>${head}</b>${body}<div class="r"><button class="btn" data-q="${i}" data-d="-1">−</button><b>${it.q}</b><button class="btn" data-q="${i}" data-d="1">+</button>${it.t==="dev"?`<button class="btn" data-e="${i}">Editar</button>`:""}<button class="btn" data-x="${i}">Quitar</button><b style="margin-left:auto">${ars(itemTotal(it))}</b></div></div>`;
   }).join("") : `<p class="mu">Tu carrito está vacío. Armá un pendrive o sumá un producto.</p>`;
   $("#tot").textContent = "TOTAL: " + ars(total());
@@ -645,21 +751,22 @@ const closeCart = () => { $("#cart").classList.remove("open"); $("#ov").classLis
 
 /* ---- eventos ---- */
 document.addEventListener("click", e => {
-  const b = e.target.closest("[data-g],[data-gp],[data-gc],[data-car],[data-cg],[data-gx],[data-gadd],[data-pc],[data-p],[data-s],[data-so],[data-st],[data-tipo],a[href='#juegos'],a[href='#inicio'],[data-q],[data-x],[data-e],.tile,nav a");
+  const b = e.target.closest("[data-g],[data-gp],[data-gc],[data-car],[data-cg],[data-gx],[data-gadd],[data-pc],[data-go],[data-p],[data-s],[data-so],[data-st],[data-tipo],a[href='#juegos'],a[href='#inicio'],[data-q],[data-x],[data-e],.tile,nav a");
   if (!b) return;
   const D = b.dataset;
-  if (b.getAttribute("href")==="#inicio") closeBuilder();
+  if (["#inicio","#productos","#servicios"].includes(b.getAttribute("href"))) closeBuilder();
   if (D.car){ const c = document.getElementById(D.car); c.scrollBy({ left: +D.dir * c.clientWidth * 0.8, behavior: "smooth" }); return; }
   if (D.cg) return showGame(D.cg);
   if (D.gx) return $("#gDlg").close();
   if (D.gadd){ $("#gDlg").close(); return goGame(D.gadd); }
-  if (b.getAttribute("href")==="#juegos" || b.classList.contains("tile") || D.p){
+  if (b.getAttribute("href")==="#juegos" || b.classList.contains("tile") || (D.p && !b.classList.contains("btn"))){
     if (bMode!=="todos") setMode("todos", true);
     openBuilder(); $("#q").value = ""; renderGames();
   }
   if (D.g) return toggleGame(D.g);
   if (D.gp){ fPlat = D.gp; return renderGames(); }
   if (D.gc){ gCat = D.gc; renderGames(); return scrollList(); }
+  if (D.go){ return oplAsk(() => { setMode(D.go, true); focusDev(); }); }
   if (D.pc){ fCat = D.pc; return renderProducts(); }
   if (D.st){ const el = document.getElementById("o-"+D.st); el.classList.toggle("open"); b.textContent = el.classList.contains("open") ? "Ocultar opciones" : "Elegir opción"; return; }
   if (D.tipo){ tipoSel = D.tipo; sel = {dev:null, games:[]}; say(""); renderTipoRow(); renderDevSelect(); renderBar(); renderGames(); return; }
@@ -837,6 +944,31 @@ function initBot(){
   const CH = [["💲 Precios", prices], ["💾 ¿Cuántos juegos entran?", capacity], ["🎮 Servicios", servicios], ["🧭 ¿Cómo hago mi pedido?", how], ["🔎 Buscar un juego", askGame], ["🙋 Hablar con una persona", () => handoff("¡Dale! 🙌")]];
   CH.forEach(([t, f]) => { const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = t; b.onclick = () => ask(t, f); chips.appendChild(b); });
   fab.onclick = () => box.hidden ? openBot() : closeBot();
+  const showCard = id => { closeBot(); closeBuilder(); const el = document.getElementById(id); if (!el) return;
+    const car = el.closest(".car");
+    const target = () => { const r = el.getBoundingClientRect(); return Math.max(0, r.top + scrollY - Math.max(70, (innerHeight - r.height) / 2)); };
+    const slideX = (smooth) => { if (!car) return; const er = el.getBoundingClientRect(), cr = car.getBoundingClientRect();
+      car.scrollTo({ left: Math.max(0, car.scrollLeft + er.left - cr.left - 2), behavior: smooth ? "smooth" : "instant" }); };
+    /* deslizamiento propio (no depende del CSS ni del navegador): ~0,7 s con frenado suave */
+    const slideY = () => { const y0 = scrollY, t0 = performance.now(), D = 700;
+      const step = now => { const k = Math.min(1, (now - t0) / D), e = 1 - Math.pow(1 - k, 3);
+        scrollTo({ top: y0 + (target() - y0) * e, behavior:"instant" }); if (k < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step); };
+    slideX(true); slideY();
+    /* al terminar, si la página se corrió (imágenes, barra del navegador), se re-acomoda */
+    [900, 1400].forEach(t => setTimeout(() => { slideX(false); scrollTo({ top: target(), behavior:"instant" }); }, t));
+    document.querySelectorAll(".card.hl").forEach(c => c.classList.remove("hl"));
+    el.classList.add("hl"); setTimeout(() => el.classList.remove("hl"), 7000); };
+  window.JB = { explainOPL(){
+    if (box.hidden) openBot();
+    last = "No tengo OPL instalado";
+    msg("me", "No tengo OPL instalado");
+    bot("Tranqui, te explico 😊<br><br><b>¿Qué es OPL?</b> Es un programa que vive en la <b>memory card</b> de tu PS2 y le enseña a la consola a leer los juegos desde un <b>pendrive o disco rígido</b>.<br><br>⚠️ <b>Sin OPL en la memory, los juegos no funcionan por sí solos:</b> la PS2 no sabe cómo leerlos del pendrive. Primero necesitás la memory con OPL y después sí los juegos.<br><br>Nosotros te la dejamos lista. Tocá lo que prefieras y te llevo directo:", [
+      { t:"💾 Memory nueva con OPL", pri:true, fn: () => showCard("p-mem-opl") },
+      { t:"🔧 Instalación de OPL en tu memory", pri:true, fn: () => showCard("s-opl") },
+      { t:"Ya lo tengo, continuar", fn: () => { try { sessionStorage.setItem("lu_opl","si"); } catch(e){} window._oplSi = true; closeBot(); openBuilder(); } }
+    ]);
+  } };
   $("#botX").onclick = closeBot;
   document.addEventListener("keydown", e => { if (e.key === "Escape" && !box.hidden) closeBot(); });
   $("#botForm").onsubmit = e => { e.preventDefault(); const t = inp.value.trim(); if (!t) return; inp.value = ""; last = t; msg("me", esc(t)); answer(t); };
@@ -863,7 +995,7 @@ function initDock(){
       [150, 400, 800].forEach(ms => setTimeout(go, ms));
       if (window.visualViewport){ const f = () => { go(); visualViewport.removeEventListener("resize", f); }; visualViewport.addEventListener("resize", f); setTimeout(() => visualViewport.removeEventListener("resize", f), 1500); } } });
   document.addEventListener("focusout", () => setTimeout(() => { if (!document.activeElement || !document.activeElement.matches("input,textarea")) document.body.classList.remove("kb"); }, 150));
-  $("#hPen").onclick = () => { setMode("nuevo", true); focusDev(); on("buscar"); };
+  $("#hPen").onclick = () => oplAsk(() => { setMode("nuevo", true); focusDev(); on("buscar"); });
 }
 
 const GEN_IC = {
